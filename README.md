@@ -50,8 +50,8 @@ You also need a Supabase account to set up the backend.
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/haroonriazhr/Resume-Genie---BOLT-Hackathon
+    cd Resume-Genie---BOLT-Hackathon
     ```
 
 2.  **Install NPM packages:**
