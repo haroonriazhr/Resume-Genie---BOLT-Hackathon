@@ -30,7 +30,7 @@ export const authService = {
   },
   
   // Login with email and password
-  login: async (email: string, password: string, remember: boolean): Promise<User> => {
+  login: async (email: string, password: string): Promise<User> => {
     const { data: { user }, error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -139,7 +139,7 @@ export const authService = {
   },
   
   // Update password
-  updatePassword: async (currentPassword: string, newPassword: string): Promise<void> => {
+  updatePassword: async (newPassword: string): Promise<void> => {
     const { error } = await supabase.auth.updateUser({
       password: newPassword,
     });

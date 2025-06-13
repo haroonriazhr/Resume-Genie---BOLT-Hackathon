@@ -149,7 +149,7 @@ export default function ProjectsForm({
                 <div className="space-y-1">
                   <h4 className="font-medium">{project.title}</h4>
                   <p className="text-xs text-muted-foreground">
-                    {format(new Date(project.startDate), 'MMM yyyy')} - {project.current 
+                    {project.startDate && format(new Date(project.startDate), 'MMM yyyy')} - {project.current
                       ? 'Present' 
                       : project.endDate 
                         ? format(new Date(project.endDate), 'MMM yyyy')

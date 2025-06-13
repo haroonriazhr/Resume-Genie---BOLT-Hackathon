@@ -47,7 +47,8 @@ registerRoute(
 
 
 // Background sync for offline resume saves
-self.addEventListener('sync', (event: SyncEvent) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+self.addEventListener('sync', (event: any) => {
   if (event.tag === 'background-sync-resume') {
     event.waitUntil(syncResumes());
   }

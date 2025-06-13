@@ -4,7 +4,7 @@ import AppSidebar from '@/components/app-sidebar';
 import { useTheme } from '@/components/theme-provider';
 
 export default function AppLayout() {
-  const { theme } = useTheme();
+  useTheme();
   
   return (
     <div className="min-h-screen bg-background">

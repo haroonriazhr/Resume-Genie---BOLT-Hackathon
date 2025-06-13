@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
         registerType: 'autoUpdate',
         injectManifest: {
           swSrc: 'src/sw.ts',
+          tsconfig: 'tsconfig.sw.json',
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],

@@ -1,4 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
 import { Resume } from '@/types';
 import { supabase, handleSupabaseError } from '@/lib/supabase';
 import { pdfService } from './pdf-service';
@@ -139,7 +138,7 @@ export const resumeService = {
   updateResume: async (id: string, data: Partial<Resume>): Promise<Resume> => {
     try {
       addBreadcrumb('Updating resume', 'resume');
-      const updateData: any = {};
+      const updateData: { [key: string]: string | undefined } = {};
 
       // Map camelCase to snake_case for database
       if (data.title !== undefined) updateData.title = data.title;

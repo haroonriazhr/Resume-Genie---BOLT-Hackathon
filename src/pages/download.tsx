@@ -26,7 +26,7 @@ export default function DownloadPage() {
 
     const fetchResume = async () => {
       try {
-        const fetchedResume = await resumeService.getResumeById(id);
+        const fetchedResume = await resumeService.getResume(id);
         if (fetchedResume) {
           setResume(fetchedResume);
         } else {
@@ -89,7 +89,7 @@ export default function DownloadPage() {
       </div>
       <div ref={resumePreviewRef}>
         <ResumePreview
-          resumeData={resume.content}
+          content={resume.content}
           templateId={resume.templateId}
         />
       </div>

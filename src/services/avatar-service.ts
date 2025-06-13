@@ -9,14 +9,6 @@ export interface AvatarUploadResult {
 /**
  * Converts a file to base64 data URL
  */
-const fileToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = error => reject(error);
-  });
-};
 
 /**
  * Resizes an image file to a maximum dimension while maintaining aspect ratio
@@ -93,7 +85,7 @@ export const avatarService = {
           const fileName = `${userId}-${Date.now()}.${fileExt}`;
 
           // Upload file
-          const { error: uploadError, data } = await supabase.storage
+          const { error: uploadError } = await supabase.storage
             .from('avatars')
             .upload(fileName, file, {
               cacheControl: '3600',

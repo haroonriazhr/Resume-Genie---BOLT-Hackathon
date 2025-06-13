@@ -4,7 +4,7 @@ import { addBreadcrumb, captureException } from '@/lib/sentry';
 /**
  * Generate sample content based on section and prompt
  */
-const generateSampleContent = (section: string, prompt: string): string => {
+const generateSampleContent = (section: string): string => {
   const sampleContent: Record<string, string[]> = {
     summary: [
       "Experienced professional with a proven track record of delivering high-quality results in fast-paced environments. Strong analytical and problem-solving skills with excellent communication abilities.",
@@ -49,7 +49,7 @@ const generateContent = async (section: string, prompt: string) => {
     if (!geminiApiKey && !deepseekApiKey) {
       console.log('No API key configured, using sample content');
       addBreadcrumb('No API key configured, using sample content', 'ai', 'warning');
-      return generateSampleContent(section, prompt);
+      return generateSampleContent(section);
     }
 
     // Try Gemini API first (if available)
@@ -130,7 +130,7 @@ const generateContent = async (section: string, prompt: string) => {
             } else {
               // For quota/auth errors, go straight to sample content
               console.log('Gemini error, falling back to sample content:', error instanceof Error ? error.message : 'Unknown error');
-              return generateSampleContent(section, prompt);
+              return generateSampleContent(section);
             }
           }
           // Continue to next model
@@ -194,7 +194,7 @@ const generateContent = async (section: string, prompt: string) => {
     // Final fallback to sample content
     console.log('All APIs failed, using sample content');
     addBreadcrumb('All AI APIs failed, using sample content', 'ai', 'warning');
-    return generateSampleContent(section, prompt);
+    return generateSampleContent(section);
 
   } catch (error) {
     console.error('AI service error:', error);
@@ -202,7 +202,7 @@ const generateContent = async (section: string, prompt: string) => {
     addBreadcrumb(`AI service error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'ai', 'error');
     
     // Always fallback to sample content on any error
-    return generateSampleContent(section, prompt);
+    return generateSampleContent(section);
   }
 };
 

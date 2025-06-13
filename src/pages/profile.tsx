@@ -23,7 +23,6 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/context/auth-context';
-import { supabase } from '@/lib/supabase';
 import { avatarService } from '@/services/avatar-service';
 
 const profileSchema = z.object({
@@ -74,7 +73,10 @@ export default function Profile() {
 
       // Delete old avatar if exists
       if (form.watch('avatarUrl')) {
-        await avatarService.deleteAvatar(form.watch('avatarUrl'));
+        const avatarUrl = form.watch('avatarUrl');
+        if (avatarUrl) {
+          await avatarService.deleteAvatar(avatarUrl);
+        }
       }
 
       // Upload new avatar using the service
