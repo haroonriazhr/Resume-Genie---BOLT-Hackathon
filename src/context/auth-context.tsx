@@ -7,11 +7,11 @@ import { User } from '@/types';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, password: string, remember?: boolean) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
   logout: (showToast?: boolean) => void;
   updateProfile: (data: { name: string; avatarUrl?: string }) => Promise<void>;
-  updatePassword: (currentPassword: string, newPassword: string) => Promise<void>;
+  updatePassword: (newPassword: string) => Promise<void>;
   deleteAccount: () => Promise<void>;
 }
 
@@ -41,10 +41,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     checkAuth();
   }, []);
 
-  const login = async (email: string, password: string, remember = false) => {
+  const login = async (email: string, password: string) => {
     try {
       setLoading(true);
-      const user = await authService.login(email, password, remember);
+      const user = await authService.login(email, password);
       setUser(user);
       setUserContext(user);
       addBreadcrumb('User logged in', 'auth');
@@ -122,9 +122,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const updatePassword = async (currentPassword: string, newPassword: string) => {
+  const updatePassword = async (newPassword: string) => {
     try {
-      await authService.updatePassword(currentPassword, newPassword);
+      await authService.updatePassword(newPassword);
       addBreadcrumb('Password updated', 'auth');
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Failed to update password';

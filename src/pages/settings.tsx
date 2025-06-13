@@ -62,7 +62,7 @@ export default function Settings() {
   const onSubmit = async (data: PasswordFormValues) => {
     try {
       setIsLoading(true);
-      await updatePassword(data.currentPassword, data.newPassword);
+      await updatePassword(data.newPassword);
       toast({
         title: 'Password updated',
         description: 'Your password has been updated successfully.',

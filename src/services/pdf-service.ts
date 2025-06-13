@@ -45,7 +45,7 @@ class PDFService {
           scale: 1,
         })
       );
-      setTimeout(resolve, 1000); // Allow time for rendering
+      setTimeout(resolve, 2000); // Allow more time for rendering
     });
 
     try {
@@ -308,6 +308,7 @@ class PDFService {
         scale: opts.quality || 2,
         useCORS: true,
         removeContainer: true,
+        backgroundColor: '#ffffff',
       });
 
       const imgData = canvas.toDataURL('image/png');

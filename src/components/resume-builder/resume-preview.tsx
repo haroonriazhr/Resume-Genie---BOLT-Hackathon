@@ -211,7 +211,7 @@ function ModernTemplate({ content }: { content: ResumeContent }) {
   return (
     <div className="bg-white w-full max-w-[800px] mx-auto font-sans text-gray-900">
       {/* Header with accent */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-8 mb-0">
+      <div className="bg-blue-600 text-white p-8 mb-0">
         <h1 className="text-4xl font-light mb-2">
           {content.personalInfo.fullName || 'Your Name'}
         </h1>
@@ -752,7 +752,7 @@ function ExecutiveTemplate({ content }: { content: ResumeContent }) {
   return (
     <div className="bg-white w-full max-w-[800px] mx-auto font-sans">
       {/* Header */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-8">
+      <div className="bg-gray-900 text-white p-8">
         <h1 className="text-4xl font-light mb-3">
           {content.personalInfo.fullName || 'Your Name'}
         </h1>

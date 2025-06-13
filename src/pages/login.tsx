@@ -49,7 +49,7 @@ export default function Login() {
   async function onSubmit(data: LoginFormValues) {
     try {
       setIsLoading(true);
-      await login(data.email, data.password, data.remember);
+      await login(data.email, data.password);
     } catch (error) {
       console.error(error);
     } finally {
